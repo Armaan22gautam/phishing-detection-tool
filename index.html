@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PhishGuard — AI-powered phishing detection tool that analyzes emails and URLs to identify suspicious domains, urgent language, and malicious patterns.">
+    <title>PhishGuard — Phishing Detection Tool</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Animated Background Particles -->
+    <div class="bg-particles" id="bg-particles"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 2L4 10V18C4 28.5 10.8 38.2 20 40C29.2 38.2 36 28.5 36 18V10L20 2Z" fill="url(#shield-gradient)" opacity="0.2" stroke="url(#shield-gradient)" stroke-width="2"/>
+                        <path d="M16 20L19 23L25 17" stroke="url(#check-gradient)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <defs>
+                            <linearGradient id="shield-gradient" x1="4" y1="2" x2="36" y2="40"><stop stop-color="#00F0FF"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient>
+                            <linearGradient id="check-gradient" x1="16" y1="17" x2="25" y2="23"><stop stop-color="#00F0FF"/><stop offset="1" stop-color="#34D399"/></linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span class="logo-text">PhishGuard</span>
+            </div>
+            <nav class="nav">
+                <a href="#scanner" class="nav-link active" id="nav-scanner">Scanner</a>
+                <a href="#history" class="nav-link" id="nav-history">History</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">
+                <span class="pulse-dot"></span>
+                Real-time Threat Analysis
+            </div>
+            <h1>Detect Phishing<br><span class="gradient-text">Before It Strikes</span></h1>
+            <p class="hero-subtitle">Analyze URLs and emails for phishing indicators including suspicious domains, urgency patterns, and social engineering tactics.</p>
+        </div>
+    </section>
+
+    <!-- Scanner Section -->
+    <section class="scanner-section" id="scanner">
+        <div class="container">
+            <!-- Tab Switcher -->
+            <div class="tab-switcher">
+                <button class="tab-btn active" id="tab-url" data-tab="url">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                    </svg>
+                    URL Scanner
+                </button>
+                <button class="tab-btn" id="tab-email" data-tab="email">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                    Email Analyzer
+                </button>
+                <div class="tab-indicator" id="tab-indicator"></div>
+            </div>
+
+            <!-- URL Scanner Panel -->
+            <div class="input-panel active" id="panel-url">
+                <div class="glass-card">
+                    <h2 class="panel-title">Scan a URL</h2>
+                    <p class="panel-desc">Enter a URL to check for phishing indicators, suspicious patterns, and security risks.</p>
+                    <div class="input-group">
+                        <div class="input-wrapper">
+                            <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="2" y1="12" x2="22" y2="12"/>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                            </svg>
+                            <input type="url" id="url-input" placeholder="https://example.com/suspicious-page" autocomplete="off" spellcheck="false">
+                        </div>
+                        <button class="scan-btn" id="url-scan-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"/>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                            </svg>
+                            Scan URL
+                        </button>
+                    </div>
+                    <div class="quick-tests">
+                        <span class="quick-label">Try examples:</span>
+                        <button class="quick-btn" data-url="http://192.168.1.1/secure-login/verify">IP-based URL</button>
+                        <button class="quick-btn" data-url="http://paypa1-secure.tk/account/verify?id=user123">Typosquatting</button>
+                        <button class="quick-btn" data-url="https://www.google.com">Safe URL</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Email Analyzer Panel -->
+            <div class="input-panel" id="panel-email">
+                <div class="glass-card">
+                    <h2 class="panel-title">Analyze Email Content</h2>
+                    <p class="panel-desc">Paste the email body text to detect phishing patterns, urgency tactics, and social engineering.</p>
+                    <div class="textarea-wrapper">
+                        <textarea id="email-input" rows="8" placeholder="Paste email content here...&#10;&#10;Example: Dear Customer, We have detected unauthorized access to your account. Please verify your identity immediately by clicking the link below or your account will be suspended within 24 hours."></textarea>
+                    </div>
+                    <div class="textarea-actions">
+                        <button class="quick-btn load-sample" id="load-sample-email">Load Sample Phishing Email</button>
+                        <button class="scan-btn" id="email-scan-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"/>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                            </svg>
+                            Analyze Email
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scanning Animation -->
+            <div class="scanning-overlay hidden" id="scanning-overlay">
+                <div class="scanning-content">
+                    <div class="scanner-ring">
+                        <div class="scanner-ring-inner"></div>
+                    </div>
+                    <p class="scanning-text">Analyzing for threats...</p>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section hidden" id="results-section">
+                <div class="glass-card results-card">
+                    <!-- Threat Score Gauge -->
+                    <div class="results-header">
+                        <div class="threat-gauge">
+                            <svg class="gauge-svg" viewBox="0 0 160 160">
+                                <circle class="gauge-bg" cx="80" cy="80" r="70" fill="none" stroke-width="10"/>
+                                <circle class="gauge-fill" id="gauge-fill" cx="80" cy="80" r="70" fill="none" stroke-width="10" stroke-dasharray="440" stroke-dashoffset="440"/>
+                            </svg>
+                            <div class="gauge-center">
+                                <span class="gauge-score" id="gauge-score">0</span>
+                                <span class="gauge-label">Threat Score</span>
+                            </div>
+                        </div>
+                        <div class="results-summary">
+                            <div class="risk-badge" id="risk-badge">
+                                <span class="risk-icon" id="risk-icon"></span>
+                                <span class="risk-text" id="risk-text">Analyzing...</span>
+                            </div>
+                            <p class="results-verdict" id="results-verdict"></p>
+                            <div class="results-stats">
+                                <div class="stat-item">
+                                    <span class="stat-value" id="stat-indicators">0</span>
+                                    <span class="stat-label">Indicators Found</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value" id="stat-critical">0</span>
+                                    <span class="stat-label">Critical</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value" id="stat-warnings">0</span>
+                                    <span class="stat-label">Warnings</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Findings List -->
+                    <div class="findings-section">
+                        <h3 class="findings-title">Detailed Findings</h3>
+                        <div class="findings-list" id="findings-list">
+                            <!-- Findings rendered by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section class="history-section" id="history">
+        <div class="container">
+            <div class="section-header">
+                <h2>Recent Scans</h2>
+                <button class="clear-history-btn" id="clear-history">Clear History</button>
+            </div>
+            <div class="history-list" id="history-list">
+                <div class="history-empty" id="history-empty">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.3">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    <p>No scans yet. Analyze a URL or email to get started.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 PhishGuard. Client-side analysis tool — no data is sent to any server.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
